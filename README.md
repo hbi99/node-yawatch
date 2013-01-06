@@ -9,6 +9,31 @@ API Usage Example
 ```js
 var monitor = require('yawatch').createMonitor();
 
+/*** IMPORTANT ***
+  - If a file is moved from the tree that is being watched,
+    a removed event is passed.
+  - If a file is moved into the tree that is being watched,
+    a create event is passed.
+*/
+monitor.proxy('/tmp/folder', function(event, source, destination) {
+  switch (event) {
+    case 'change':
+        // Handle changed file (never folder)
+        break;
+    case 'create':
+        // Handle created file or folder
+        break;
+    case 'remove':
+        // Handle removed file or folder
+        break;
+    case 'move':
+        // Handle moved file or folder
+        // can be move from a folder to another folder (both watched)
+        // can be a rename operation (same parent folder)
+        break;
+  }
+});
+
 monitor.stat([
   '/tmp/test.txt',
   '/tmp/folder'
@@ -45,6 +70,8 @@ API
 .createMonitor()
 
 monitor.stat(array || string, callback)
+
+monitor.proxy(array || string, callback)
 
 monitor.reset()
 
