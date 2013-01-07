@@ -1,4 +1,4 @@
-yawatch - with event-proxy
+yawatch (with event-proxy)
 =======
 
 Yet another file tree watcher/monitor that just works.
