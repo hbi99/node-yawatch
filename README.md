@@ -1,4 +1,4 @@
-yawatch
+yawatch - with proxy
 =======
 
 Yet another file tree watcher/monitor that just works.
